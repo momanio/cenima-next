@@ -2,7 +2,7 @@ import { Movie, Series } from "@/app/types";
 import axios from "axios";
 
 const API_URL = "https://api.themoviedb.org/3";
-const API_KEY = process.env.VITE_TMDB_API_KEY;
+const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 
 export const getPopularMovies = async (): Promise<Movie[]> => {
   try {
@@ -11,7 +11,7 @@ export const getPopularMovies = async (): Promise<Movie[]> => {
     });
     return response.data.results;
   } catch (error) {
-    console.error("Failed to fetch popular movies:", error);
+    console.log("Failed to fetch popular movies:", error);
     return [];
   }
 };
@@ -23,7 +23,7 @@ export const getPopularShows = async (): Promise<Series[]> => {
     });
     return response.data.results;
   } catch (error) {
-    console.error("Failed to fetch popular shows:", error);
+    console.log("Failed to fetch popular shows:", error);
     return [];
   }
 };
@@ -35,7 +35,7 @@ export const getMovieDetails = async (movieId: number): Promise<Movie> => {
     });
     return response.data;
   } catch (error) {
-    console.error(`Failed to fetch movie details for ID ${movieId}:`, error);
+    console.log(`Failed to fetch movie details for ID ${movieId}:`, error);
     throw new Error("Could not fetch movie details");
   }
 };
@@ -47,7 +47,7 @@ export const getShowDetails = async (showId: number): Promise<Series> => {
     });
     return response.data;
   } catch (error) {
-    console.error(`Failed to fetch show details for ID ${showId}:`, error);
+    console.log(`Failed to fetch show details for ID ${showId}:`, error);
     throw new Error("Could not fetch show details");
   }
 };

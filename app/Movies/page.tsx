@@ -1,9 +1,9 @@
 "use client";
-
-import { useState, useRef, useEffect } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import { useState, useRef, useEffect } from "react";
+
 import { motion } from "framer-motion";
 import { Movie } from "@/app/types";
 import { Swiper, SwiperSlide } from "swiper/react";
