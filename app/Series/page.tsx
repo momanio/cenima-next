@@ -9,9 +9,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import { getPopularShows } from "@/services/api";
 import { useQuery } from "@tanstack/react-query";
-import type { Series } from "../types";
-import Link from "next/link";
+
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import { Series } from "@/app/types";
+import Link from "next/link";
+
 export default function Page() {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const mainSwiperRef = useRef<SwiperType | null>(null);
@@ -55,7 +57,7 @@ export default function Page() {
 
   return (
     <motion.div
-      className="container mx-auto px-4 relative"
+      className="mx-auto  relative"
       variants={containerVariant}
       initial="hidden"
       animate="visible"
@@ -80,7 +82,7 @@ export default function Page() {
         >
           {series?.map((serie) => (
             <SwiperSlide key={serie.id} className="rounded-lg overflow-hidden">
-              <Link href={`/series/${serie.id}`} className="block">
+              <Link href={`/Series/${serie.id}`}>
                 <motion.img
                   src={`https://image.tmdb.org/t/p/w200${serie.poster_path}`}
                   alt={serie.name}
@@ -134,7 +136,7 @@ export default function Page() {
               whileHover="hover"
             />
             <motion.h2
-              className="text-3xl font-semibold text-white truncate mt-4"
+              className="text-3xl px-6  font-semibold text-white truncate mt-4"
               variants={textVariant}
               initial="hidden"
               animate="visible"
@@ -142,7 +144,7 @@ export default function Page() {
               {serie.name}
             </motion.h2>
             <motion.p
-              className="mt-2 text-lg text-gray-100 line-clamp-4"
+              className="mt-2  mx-4 text-lg text-gray-100 line-clamp-4"
               variants={textVariant}
               initial="hidden"
               animate="visible"

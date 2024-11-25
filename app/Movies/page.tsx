@@ -12,6 +12,8 @@ import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 
 import { getPopularMovies } from "../../services/api";
 import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
+
 export default function Page() {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const mainSwiperRef = useRef<SwiperType | null>(null);
@@ -55,7 +57,7 @@ export default function Page() {
 
   return (
     <motion.div
-      className="container mx-auto px-4 relative"
+      className="mx-auto  relative"
       variants={containerVariant}
       initial="hidden"
       animate="visible"
@@ -80,31 +82,33 @@ export default function Page() {
         >
           {movies?.map((movie) => (
             <SwiperSlide key={movie.id} className="rounded-lg overflow-hidden">
-              <motion.img
-                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                alt={movie.title}
-                className="w-full h-auto object-cover rounded-lg opacity-80 hover:opacity-100 transition duration-300"
-                variants={imageVariant}
-                initial="hidden"
-                animate="visible"
-                whileHover="hover"
-              />
-              <motion.h3
-                className="text-2xl font-semibold text-white truncate mt-2"
-                variants={textVariant}
-                initial="hidden"
-                animate="visible"
-              >
-                {movie.title}
-              </motion.h3>
-              <motion.p
-                className="mt-2 text-lg text-gray-100 line-clamp-3"
-                variants={textVariant}
-                initial="hidden"
-                animate="visible"
-              >
-                {movie.release_date}
-              </motion.p>
+              <Link href={`/Movies/${movie.id}`}>
+                <motion.img
+                  src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                  alt={movie.title}
+                  className="w-full h-auto object-cover rounded-lg opacity-80 hover:opacity-100 transition duration-300"
+                  variants={imageVariant}
+                  initial="hidden"
+                  animate="visible"
+                  whileHover="hover"
+                />
+                <motion.h3
+                  className="text-2xl font-semibold text-white truncate mt-4"
+                  variants={textVariant}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  {movie.title}
+                </motion.h3>
+                <motion.p
+                  className="mt-2 text-lg text-gray-100 line-clamp-3"
+                  variants={textVariant}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  {movie.release_date}
+                </motion.p>
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>
@@ -132,7 +136,7 @@ export default function Page() {
               whileHover="hover"
             />
             <motion.h2
-              className="text-3xl font-semibold text-white truncate mt-4"
+              className="text-3xl px-6 mt-4 font-semibold text-white truncate"
               variants={textVariant}
               initial="hidden"
               animate="visible"
@@ -140,7 +144,7 @@ export default function Page() {
               {movie.title}
             </motion.h2>
             <motion.p
-              className="mt-2 text-lg text-gray-100 line-clamp-4"
+              className="mt-2 px-4  text-lg text-gray-100 line-clamp-4"
               variants={textVariant}
               initial="hidden"
               animate="visible"

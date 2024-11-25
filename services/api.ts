@@ -6,10 +6,10 @@ const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 
 export const getPopularMovies = async (): Promise<Movie[]> => {
   try {
-    const response = await axios.get(`${API_URL}/movie/popular`, {
+    const res = await axios.get(`${API_URL}/movie/popular`, {
       params: { api_key: API_KEY },
     });
-    return response.data.results;
+    return res.data.results;
   } catch (error) {
     console.log("Failed to fetch popular movies:", error);
     return [];

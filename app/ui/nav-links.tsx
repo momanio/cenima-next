@@ -7,12 +7,14 @@ export function NavLinks() {
   const pathname = usePathname();
 
   return (
-    <nav className="w-full flex items-center py-2 sticky top-0 z-20 bg-gray-950 sm:opacity-[0.7] xxs:h-[12vh]">
+    <nav className="w-full flex items-center py-2  px-2 sticky top-0 z-20 bg-gradient-to-r from-slate-500 to-slate-800 sm:opacity-[0.6] h-[12vh] sm:h-[10vh] md:h-[8vh] lg:h-[6vh]">
       <ul className="flex flex-col sm:flex-row sm:space-x-4">
         <li>
           <Link
             className={`link ${
-              pathname === "/" ? "active" : "px-2 py-1 sm:px-4 sm:py-2"
+              pathname === "/"
+                ? "active"
+                : "px-2 py-1 sm:px-4 sm:py-2 hover:bg-slate-700 translate-x-1"
             }`}
             href="/"
           >
@@ -33,7 +35,7 @@ export function NavLinks() {
         <li>
           <Link
             className={`link ${
-              pathname === "/Series" ? "active" : "px-2 py-1 sm:px-4 sm:py-2"
+              pathname === "/series" ? "active" : "px-2 py-1 sm:px-4 sm:py-2"
             }`}
             href="/Series"
           >

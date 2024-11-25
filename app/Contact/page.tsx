@@ -54,7 +54,7 @@ export default function Page() {
         () => {
           setLoading(false);
           setMessageType("success");
-          setMessage("Thank you. I will get back to you as soon as possible.");
+          setMessage("Thank you. we will get back to you as soon as possible.");
           reset();
         },
         (error) => {
@@ -84,12 +84,14 @@ export default function Page() {
           className="mt-10 flex flex-col gap-6 font-poppins"
         >
           <label className="flex flex-col">
-            <span className="text-timberWolf font-medium mb-4">Your Name</span>
+            <span className="text-timberWolf font-semibold mb-4">
+              Your Name
+            </span>
             <input
               type="text"
               {...register("name", { required: "Name is required" })}
               placeholder="What's your name?"
-              className="bg-black/30 py-4 px-6 placeholder:text-gray-400 text-timberWolf rounded-lg outline-none border border-white/10 focus:border-white transition duration-200"
+              className="bg-black/30 py-4 px-6 placeholder:text-gray-400 text-timberWolf rounded-lg outline-none border border-white/10 focus:border-transparent transition duration-200"
             />
             {errors.name && (
               <p className="text-red-500 text-sm">{errors.name.message}</p>
@@ -97,7 +99,9 @@ export default function Page() {
           </label>
 
           <label className="flex flex-col">
-            <span className="text-timberWolf font-medium mb-4">Your Email</span>
+            <span className="text-timberWolf font-semibold mb-4">
+              Your Email
+            </span>
             <input
               type="email"
               {...register("email", {
@@ -116,7 +120,7 @@ export default function Page() {
           </label>
 
           <label className="flex flex-col">
-            <span className="text-timberWolf font-medium mb-4">
+            <span className="text-timberWolf font-semibold mb-4">
               Your Message
             </span>
             <textarea
@@ -141,7 +145,7 @@ export default function Page() {
           <div
             className={`mt-4 p-4 rounded-md text-center ${
               messageType === "success"
-                ? "bg-green-500 text-white"
+                ? "bg-gradient-to-r from-teal-500 to-emerald-900"
                 : "bg-red-500 text-white"
             }`}
           >
